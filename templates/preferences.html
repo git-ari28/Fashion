@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Your Preferences</title>
+</head>
+<body>
+    <h1>Select a Subcategory for {{ category }} ({{ gender }})</h1>
+
+    <form method="POST">
+        {% for cat, subcategories in subcategory_folders.items() %}
+            <label for="{{ cat }}_preference">{{ cat.capitalize() }}:</label>
+            <select name="{{ cat }}_preference" id="{{ cat }}_preference">
+                <option value="">Select a Subcategory</option>
+                {% for subcategory in subcategories %}
+                    <option value="{{ subcategory }}">{{ subcategory }}</option>
+                {% endfor %}
+            </select><br><br>
+        {% endfor %}
+        <button type="submit">Submit Preferences</button>
+    </form>
+</body>
+</html>
+
+
+
+
+
+
+
+

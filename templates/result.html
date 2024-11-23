@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recommended Items</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .image-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .image-card {
+            width: 200px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        .image-card img {
+            width: 100%;
+            height: auto;
+            border-bottom: 2px solid #ddd;
+        }
+        .image-card p {
+            padding: 10px;
+            background-color: #fff;
+            margin: 0;
+            font-size: 16px;
+        }
+        .image-card button {
+            width: 100%;
+            padding: 10px;
+            background-color: #ff4081;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 0 0 10px 10px;
+            transition: background-color 0.3s;
+        }
+        .image-card button:hover {
+            background-color: #d4005f;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Recommended Items for You</h1>
+    <div class="image-grid">
+        {% for image in images %}
+            <div class="image-card">
+                <img src="{{ url_for('static', filename=image) }}" alt="Recommended Image">
+                <p>Suggested Item</p>
+                <button onclick="location.href='{{ url_for('preferences', gender=gender, category=category) }}'">Get Similar</button>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+</body>
+</html>
+
+
+
